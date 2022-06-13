@@ -44,7 +44,6 @@
   - [Branch naming & pull requests](#branch-naming--pull-requests)
 - [Authors & contributors](#authors--contributors)
 - [Security](#security)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 </details>
@@ -171,12 +170,6 @@ ThinkBIG follows good practices of security, but 100% security cannot be assured
 ThinkBIG is provided **"as is"** without any **warranty**. Use at your own risk.
 
 _For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
-
-## License
-
-This project is licensed under the **GNU General Public License v3**.
-
-See [LICENSE](LICENSE) for more information.
 
 ## Acknowledgements
 
