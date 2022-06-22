@@ -7,10 +7,10 @@
 
 
 # architecture files
-package.json @100Devs/architecture
-pnpm-lock.yaml @100Devs/architecture
-pnpm-workspace.yaml @100Devs/architecture
-turbo.json @100Devs/architecture
-.* @100Devs/architecture
-.husky/ @100Devs/architecture
-.github/ @100Devs/architecture
+package.json @100Devs-ADHD/architecture
+pnpm-lock.yaml @100Devs-ADHD/architecture
+pnpm-workspace.yaml @100Devs-ADHD/architecture
+turbo.json @100Devs-ADHD/architecture
+.* @100Devs-ADHD/architecture
+.husky/ @100Devs-ADHD/architecture
+.github/ @100Devs-ADHD/architecture
