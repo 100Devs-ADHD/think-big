@@ -18,7 +18,7 @@
     "@100devs-adhd/ui": "workspace:*"
   },
   "devDependencies": {
-    "eslint": "8.17.0",
+    "eslint": "8.18.0",
     "@100devs-adhd/eslint-config-thinkbig": "workspace:*"
   }
 }
