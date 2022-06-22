@@ -32,7 +32,7 @@
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=18",
+    "node": ">=16",
     "pnpm": ">=7.1.9"
   }
 }
