@@ -11,5 +11,8 @@
     "reviewersFromCodeOwners": true,
     "assigneesFromCodeOwners": true,
     "semanticCommits": "enabled",
-    "assignAutomerge": true
+    "assignAutomerge": true,
+    "baseBranches": [
+        "develop"
+    ]
 }
