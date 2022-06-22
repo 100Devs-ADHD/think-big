@@ -1,0 +1,23 @@
+name: Auto update open PRs
+on:
+   push:
+     branches:
+       - main
+       - develop
+#    pull_request:
+#      branches:
+#        - main
+#        - develop
+#      types:
+#       - closed
+jobs:
+  autoupdate:
+#     if: (github.event.pull_request.merged == true || github.event.push.created == true)
+    name: Auto update open PRs
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+#           DRY_RUN: "true"
+          EXCLUDED_LABELS: "dependencies,stale"
