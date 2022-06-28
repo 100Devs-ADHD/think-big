@@ -39,6 +39,12 @@
 - name: "no-stale"
   color: fef2c0
   description: "This is exempt from the stale bot."
+- name: "automerge"
+  color: 00ff00
+  description: "Enable Kodiak auto-merge"
+- name: "ff-sync"
+  color: ff0000
+  description: "Fast Forward Merge - used to sync main to develop"
 
 - name: "security"
   color: ee0701
