@@ -3,18 +3,6 @@
 		{
 			"name": "✨ @100devs-adhd/think-big",
 			"path": "."
-		},
-		{
-			"name": "🚀 @100devs-adhd/frontend",
-			"path": "apps/frontend"
-		},
-		{
-			"name": "📦 @100devs-adhd/eslint-config-thinkbig",
-			"path": "packages/eslint-config-thinkbig"
-		},
-		{
-			"name": "📦 @100devs-adhd/ui",
-			"path": "packages/ui"
 		}
 	],
 	"settings": {

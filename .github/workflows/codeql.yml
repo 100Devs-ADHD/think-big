@@ -4,17 +4,37 @@ name: CodeQL
 on:
   push:
   pull_request:
+    types: [ready_for_review]
   schedule:
     - cron: "30 1 * * 0"
 
 jobs:
+  preflight:
+    name: Preflight Checks
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v4
+        with:
+          # All of these options are optional, so you can remove them if you are happy with the defaults
+          concurrent_skipping: "same_content"
+          #           paths_ignore: '["**/README.md", "**/docs/**"]'
+          do_not_skip: '["pull_request"]'
   codeql:
+    needs: preflight
+    # If 'skip-duplicate-actions' terminates before the paths checks are performed (for example, when a successful duplicate run has
+    # been found) 'paths_result' outputs an empty object ('{}'). This can be easily intercepted in the if condition of a job
+    # by checking the result of the "global" 'should_skip' output first.
+    if: needs.preflight.outputs.should_skip != 'true'
     name: 🏭 Scanning
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
       - name: 🏗 Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
       - name: 🚀 Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
