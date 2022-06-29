@@ -29,10 +29,11 @@ specifiers:
   dayjs: ^1.11.3
   eslint: 8.18.0
   eslint-config-next: 12.2.0
+  eslint-config-prettier: ^8.5.0
   husky: ^8.0.1
   lint-staged: ^13.0.0
   next: 12.2.0
-  next-auth: 4.6.1
+  next-auth: 4.7.0
   prettier: ^2.7.1
   prisma: 3.15.2
   react: 18.2.0
@@ -55,12 +56,12 @@ dependencies:
   '@mantine/spotlight': 4.2.11_hwkwxxnle3jso5fw4rzinaggj4
   '@mdx-js/loader': 2.1.2_webpack@5.73.0
   '@mdx-js/react': 2.1.2_react@18.2.0
-  '@next-auth/prisma-adapter': 1.0.3_vvk7yqe637uongvoquuzkhfrze
+  '@next-auth/prisma-adapter': 1.0.3_6yotnn552ko4xohhb2rhhtugxe
   '@next/mdx': 12.2.0_todqhrvd7cvbb36hzi2r6xttgq
   '@prisma/client': 3.15.2_prisma@3.15.2
   dayjs: 1.11.3
   next: 12.2.0_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.6.1_biqbaboplfbrettd7655fr4n2y
+  next-auth: 4.7.0_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-markdown: 8.0.3_luyos4mouogwq6z3wafb3re4ce
@@ -77,6 +78,7 @@ devDependencies:
   cz-git: 1.3.8
   eslint: 8.18.0
   eslint-config-next: 12.2.0_b5e7v2qnwxfo6hmiq56u52mz3e
+  eslint-config-prettier: 8.5.0_eslint@8.18.0
   husky: 8.0.1
   lint-staged: 13.0.3
   prettier: 2.7.1
@@ -825,14 +827,14 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@next-auth/prisma-adapter/1.0.3_vvk7yqe637uongvoquuzkhfrze:
+  /@next-auth/prisma-adapter/1.0.3_6yotnn552ko4xohhb2rhhtugxe:
     resolution: {integrity: sha512-3Lq1cD3ytKM3EGKJZ4UZvlqshLtlPvYxLeCrUV9ifYwYlq51kmDaHjsIawlp8EbH5pE1UhlsvtlXMery7RghtA==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4.0.1
     dependencies:
       '@prisma/client': 3.15.2_prisma@3.15.2
-      next-auth: 4.6.1_biqbaboplfbrettd7655fr4n2y
+      next-auth: 4.7.0_biqbaboplfbrettd7655fr4n2y
     dev: false
 
   /@next/env/12.2.0:
@@ -2443,6 +2445,15 @@ packages:
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
+    dev: true
+
+  /eslint-config-prettier/8.5.0_eslint@8.18.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.18.0
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -4354,8 +4365,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
-  /next-auth/4.6.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-Fq0+NUZ0Kp7LhT0UZzZkSBcRb0W6DYlhgTUZragSqW5HXTJ7ShgFqOhH5aFoGSpXIxsZQmfFBbt9Oun09mf+aA==}
+  /next-auth/4.7.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-boXSIzHvCyNq1Jthi24LLnx12iKBsqsMxUKm5qq9alkfhVMeIRUR/wKP0FPSGc1s9WcGXMS3NmKQfADCEb0wow==}
     engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0}
     peerDependencies:
       nodemailer: ^6.6.5
