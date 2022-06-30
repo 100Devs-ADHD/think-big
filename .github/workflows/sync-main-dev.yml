@@ -20,9 +20,9 @@ jobs:
         uses: tretuna/sync-branches@1.4.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "main"
-          TO_BRANCH: "develop"
-          PULL_REQUEST_TITLE: "chore: 🔨 sync main to develop"
+          FROM_BRANCH: 'main'
+          TO_BRANCH: 'develop'
+          PULL_REQUEST_TITLE: 'chore: 🔨 sync main to develop'
           CONTENT_COMPARISON: true
       - name: Applying label to pull request
         id: label
@@ -30,4 +30,3 @@ jobs:
         with:
           labels: maintenance
           number: ${{ steps.pull.outputs.PULL_REQUEST_NUMBER }}
-          
