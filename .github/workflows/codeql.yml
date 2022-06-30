@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [ready_for_review]
   schedule:
-    - cron: "30 1 * * 0"
+    - cron: '30 1 * * 0'
 
 jobs:
   preflight:
@@ -20,7 +20,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v4
         with:
           # All of these options are optional, so you can remove them if you are happy with the defaults
-          concurrent_skipping: "same_content"
+          concurrent_skipping: 'same_content'
           #           paths_ignore: '["**/README.md", "**/docs/**"]'
           do_not_skip: '["pull_request"]'
   codeql:
