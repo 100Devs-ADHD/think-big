@@ -1,4 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-exec < /dev/tty && npx cz --hook || true
+MSGFILE=$(git rev-parse --git-dir)/COMMIT_EDITMSG
+
+if npx commitlint --edit; then
+
+	exec < /dev/tty && npx cz --hook || true
+
+elif $(head -n1 $MSGFILE) = "" ; then
+	
+	exec < /dev/tty && npx cz --hook || true
+
+fi
