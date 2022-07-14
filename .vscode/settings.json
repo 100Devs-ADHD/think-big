@@ -1,0 +1,17 @@
+{
+	"cSpell.words": ["adhd", "thinkbig"],
+	"docthis.includeAuthorTag": true,
+	"docthis.includeDateTag": true,
+	"docthis.includeDescriptionTag": true,
+	"docthis.inferTypesFromNames": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"exportall.config.folderListener": ["/src/components"],
+	"exportall.config.semis": false,
+	"git.autofetch": true
+}

@@ -6,28 +6,10 @@
 		}
 	],
 	"settings": {
-		"editor.formatOnPaste": true,
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
-		},
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"docthis.includeAuthorTag": true,
-		"docthis.includeDateTag": true,
-		"docthis.includeDescriptionTag": true,
-		"docthis.inferTypesFromNames": true,
-		"git.autofetch": true
-	},
-	"extensions": {
-		"recommendations": [
-			"mgmcdermott.vscode-language-babel",
-			"oouo-diogo-perdigao.docthis",
-			"ms-vsliveshare.vsliveshare",
-			"bengreenier.vscode-node-readme",
-			"christian-kohler.npm-intellisense",
-			"Jacano.vscode-pnpm",
-			"esbenp.prettier-vscode",
-			"editorconfig.editorconfig"
+		"exportall.config.folderListener": [
+			"/src/components",
+			"/mockdata",
+			"/src/style"
 		]
 	}
 }
