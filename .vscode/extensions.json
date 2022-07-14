@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"ms-vsliveshare.vsliveshare",
+		"bengreenier.vscode-node-readme",
+		"christian-kohler.npm-intellisense",
+		"wraith13.bracket-lens",
+		"Kurozero.vscode-commit-reminder",
+		"dsznajder.es7-react-js-snippets",
+		"dbaeumer.vscode-eslint",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"editorconfig.editorconfig",
+		"eliostruyf.vscode-typescript-exportallmodules"
+	]
+}
