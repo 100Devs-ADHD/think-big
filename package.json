@@ -49,7 +49,7 @@
 		"@commitlint/config-conventional": "^17.0.2",
 		"@faker-js/faker": "^7.3.0",
 		"@iconify/react": "^3.2.2",
-		"@types/node": "16.11.44",
+		"@types/node": "16.11.45",
 		"@types/react": "18.0.15",
 		"babel-loader": "^8.2.5",
 		"commitizen": "^4.2.4",
