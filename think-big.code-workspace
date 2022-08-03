@@ -21,7 +21,8 @@
 		"exportall.config.folderListener": [
 			"/src/components",
 			"/mockdata",
-			"/src/style"
+			"/src/style",
+			"/src/components/GlobalModals"
 		],
 		"exportall.config.semis": false,
 		"git.autofetch": true,

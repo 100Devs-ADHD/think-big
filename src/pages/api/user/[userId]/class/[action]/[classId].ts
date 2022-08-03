@@ -1,7 +1,5 @@
-import { prisma } from '~/lib'
 import { getServerSession } from '~/pages/api/auth/[...nextauth]'
 import type { NextApiHandler } from 'next'
-import { userClassComposite } from '~/common/dbSelect'
 import { fetchClassStatuses, updateClassStatus } from '~/hooks'
 import { z } from 'zod'
 
@@ -19,7 +17,6 @@ const handler: NextApiHandler = async (req, res) => {
 	const { classId, userId, action } = req.query as Partial<QueryParams>
 	const { method, headers } = req
 
-	console.log(req.body)
 	if (!session) {
 		// res.status(401) // disabled for now during dev.
 		// res.end()

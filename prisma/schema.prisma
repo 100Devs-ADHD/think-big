@@ -9,20 +9,22 @@ datasource db {
 
 // Next-Auth - DO NOT MODIFY
 model Account {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
   userId             String
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String? @db.String
-  access_token       String? @db.String
+  refresh_token      String?   @db.String
+  access_token       String?   @db.String
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String? @db.String
+  id_token           String?   @db.String
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
+  createdAt          DateTime? @default(now())
+  updatedAt          DateTime? @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -31,11 +33,13 @@ model Account {
 
 // Next-Auth - DO NOT MODIFY
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  sessionToken String   @unique
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String    @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime? @default(now())
+  updatedAt    DateTime? @updatedAt
 }
 
 // Next-Auth - DO NOT MODIFY
@@ -160,6 +164,8 @@ model ClassVOD {
   service    VODservice
   url        String
   timestamps VODtimestamps?
+  createdAt  DateTime?      @default(now())
+  updatedAt  DateTime?      @updatedAt
 }
 
 enum VODservice {
@@ -204,24 +210,30 @@ model AssignmentStatus {
   assignment   Assignment @relation(fields: [assignmentId], references: [id])
   user         User[]     @relation(fields: [userId], references: [id])
   userId       String[]   @db.ObjectId
+  createdAt    DateTime?  @default(now())
+  updatedAt    DateTime?  @updatedAt
 }
 
 model ClassStatus {
-  id      String          @id @default(auto()) @map("_id") @db.ObjectId
-  classId String          @db.ObjectId
-  class   Class           @relation(fields: [classId], references: [id], onDelete: Cascade)
-  user    User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId  String          @db.ObjectId
-  status  ClassStatusEnum
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
+  classId   String          @db.ObjectId
+  class     Class           @relation(fields: [classId], references: [id], onDelete: Cascade)
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String          @db.ObjectId
+  status    ClassStatusEnum
+  createdAt DateTime?       @default(now())
+  updatedAt DateTime?       @updatedAt
 
   @@unique([classId, userId])
 }
 
 model CheckinTweet {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
   url              String
-  class            Class    @relation(fields: [classId], references: [id])
-  classId          String   @unique @db.ObjectId
-  checkedInUsers   User[]   @relation(fields: [checkedInUsersId], references: [id])
-  checkedInUsersId String[] @db.ObjectId
+  class            Class     @relation(fields: [classId], references: [id])
+  classId          String    @unique @db.ObjectId
+  checkedInUsers   User[]    @relation(fields: [checkedInUsersId], references: [id])
+  checkedInUsersId String[]  @db.ObjectId
+  createdAt        DateTime? @default(now())
+  updatedAt        DateTime? @updatedAt
 }

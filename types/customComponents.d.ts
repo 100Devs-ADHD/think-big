@@ -7,7 +7,7 @@ declare interface AuthWrapProps {
 	children?: AppProps['children']
 	role?: User['role']
 	loader?: JSX.Element
-	redirectTo?: 'signin' | 'accessdenied'
+	// redirectTo?: 'signin' | 'accessdenied'
 }
 
 export type ComponentWithAuth<PropsTypes = any> = React.FC<PropsTypes> & {

@@ -10,7 +10,7 @@ import {
 import { useColorScheme } from '@mantine/hooks'
 import { ModalsProvider } from '@mantine/modals'
 import { NotificationsProvider, showNotification } from '@mantine/notifications'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MainLayout } from '~/layouts'
 import { baseTheme } from '~/style'
 import {
@@ -19,7 +19,9 @@ import {
 	QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { CenterLoader } from '~/components'
+import { CenterLoader, isDevEnv } from '~/components'
+import { modalDefinitions } from '~/components/GlobalModals'
+import notify from '~/data/notifications'
 import type { ComponentWithAuth } from 'types/customComponents'
 import type { NextPageContext, NextComponentType } from 'next'
 
@@ -31,49 +33,31 @@ export type NextComponentWithAuth = NextComponentType<
 	ComponentWithAuth
 type AppPropsWithAuth = AppProps & { Component: NextComponentWithAuth }
 
-const handleAuth = (
-	role = 'USER',
-	loader = <CenterLoader />,
-	redirectTo = 'signin'
-) => {}
-
 const Auth: ComponentWithAuth = ({ children, auth }) => {
-	const {
-		role = 'USER',
-		loader = <CenterLoader />,
-		redirectTo = 'signin',
-	} = auth
+	const { role = 'USER', loader = <CenterLoader /> } = auth
 	const { data: session, status } = useSession()
+	const isLoading = status === 'loading'
+	const hasUser = !!session?.user
+	const hasRole = session?.user?.role === role
 	const router = useRouter()
-	const signinUrl = '/api/auth/signin?Error=SessionRequired'
-	const accessdeniedUrl = '/api/auth/error?Error=AccessDenied'
-	const notificationSignIn = {
-		title: 'Auth required',
-		message: `Things may not work correctly - if this wasn't a dev environment, you'd be kicked to the SignIn page right now.`,
-		color: 'red',
-	}
-	const notificationAccessDenied = {
-		title: 'Elevated user role required',
-		message: `This would normally need 'MOD' or 'ADMIN' permissions - if this wasn't a dev environment, you'd be kicked to the Access Denied error page right now.`,
-		color: 'red',
-	}
-	switch (status) {
-		case 'loading':
-			return loader
-		case 'authenticated':
-			if (session.user.role === role) return children
-			process.env.NODE_ENV === 'development'
-				? showNotification(notificationAccessDenied)
+	const signinUrl = '/api/auth/signin?error=SessionRequired'
+	const accessdeniedUrl = '/api/auth/error?error=AccessDenied'
+
+	useEffect(() => {
+		if (!isLoading && !hasUser)
+			isDevEnv()
+				? showNotification(notify('devSignIn'))
+				: router.push(signinUrl)
+		if (!isLoading && !hasRole && hasUser)
+			isDevEnv()
+				? showNotification(notify('devAccessDenied'))
 				: router.push(accessdeniedUrl)
-		case 'unauthenticated':
-			if (redirectTo === 'signin')
-				return process.env.NODE_ENV === 'development'
-					? showNotification(notificationSignIn)
-					: router.push(signinUrl)
-			process.env.NODE_ENV === 'development'
-				? showNotification(notificationAccessDenied)
-				: router.push(accessdeniedUrl)
-	}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLoading, hasUser, hasRole])
+
+	if (isLoading || !hasUser) return loader
+
+	return children
 }
 
 const App = (props: AppPropsWithAuth) => {
@@ -89,7 +73,6 @@ const App = (props: AppPropsWithAuth) => {
 				defaultOptions: { queries: { staleTime: 1000 * 60 * 5 } },
 			})
 	)
-
 	return (
 		<SessionProvider session={pageProps.session}>
 			<Head>
@@ -112,7 +95,7 @@ const App = (props: AppPropsWithAuth) => {
 							theme={baseTheme}
 						>
 							<NotificationsProvider position='top-center'>
-								<ModalsProvider>
+								<ModalsProvider modals={modalDefinitions}>
 									<MainLayout>
 										{Component.auth?.required ? (
 											<Auth auth={Component.auth}>

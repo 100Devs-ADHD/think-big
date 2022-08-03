@@ -6,11 +6,14 @@ import {
 	Button,
 	Text,
 	createStyles,
+	Center,
 } from '@mantine/core'
+import { NextLink } from '@mantine/next'
 import { Icon } from '@iconify/react'
 import React, { useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import styles from './UserMenu.module.scss'
+import { useRouter } from 'next/router'
 
 // This is Typescript stuff - don't worry about it.
 interface LoggedInProps {
@@ -40,11 +43,16 @@ const useStyles = createStyles((theme) => ({
 	userActive: {
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : '',
 	},
+	icon: {
+		// fontSize: '2.5rem',
+		marginRight: '2rem',
+	},
 }))
 
 const LoggedInUser = ({ image, name }: LoggedInProps) => {
 	const [userMenuOpened, setUserMenuOpened] = useState(false)
 	const { classes } = useStyles()
+	const router = useRouter()
 
 	return (
 		<Menu
@@ -60,16 +68,28 @@ const LoggedInUser = ({ image, name }: LoggedInProps) => {
 						<Avatar
 							src={image}
 							radius='xl'
+							size='lg'
 							alt={name}
 							className={styles.avatarShadow}
 						/>
-						<Icon icon='tabler:chevron-down' />
+						<Icon icon='fa6-solid:chevron-down' height='18' />
 					</Group>
 				</UnstyledButton>
 			</Menu.Target>
 			<Menu.Dropdown>
-				<Menu.Item onClick={() => signOut({ callbackUrl: '/' })}>
-					Logout
+				<Menu.Item
+					component={NextLink}
+					href='/dashboard/profile'
+					icon={<Icon icon='fa6-solid:user-pen' height='20' />}
+				>
+					<Center>Profile</Center>
+				</Menu.Item>
+				<Menu.Divider />
+				<Menu.Item
+					onClick={() => signOut({ callbackUrl: '/' })}
+					icon={<Icon icon='fa6-solid:door-open' height='20' />}
+				>
+					<Center>Logout</Center>
 				</Menu.Item>
 				{/* <Menu.Item>Item 2</Menu.Item> */}
 			</Menu.Dropdown>
